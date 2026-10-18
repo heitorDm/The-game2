@@ -1,0 +1,29 @@
+SOL'S RNG — DARK FANTASY v12
+
+TESTAR NO SEU PC (VERSÃO DE DESENVOLVIMENTO)
+1. Instale Python 3.11 ou mais novo.
+2. Extraia TODO este ZIP para uma pasta.
+3. Dê dois cliques em run_windows.bat.
+4. Na primeira vez, aguarde a instalação das dependências; mantenha o terminal aberto.
+5. Quando o jogo abrir, use a tela inicial para CRIAR CONTA ou ENTRAR NA CONTA.
+6. Esc pausa durante a run. SALVAR E SAIR sincroniza o save antes de voltar ao menu.
+
+CRIAR O INSTALADOR DO WINDOWS
+1. Instale Node.js 24 LTS ou mais novo, além de Python 3.11+.
+2. Com internet, execute build_windows_installer.bat.
+3. O instalador será criado em release\SolsRNGDarkFantasy-Setup-0.12.0.exe.
+4. O instalador adiciona uma janela própria, ícone e atalhos no Desktop/Menu Iniciar. O jogador final não precisa instalar Python nem Node.
+5. Ao abrir, escolha JOGAR LOCALMENTE para seu servidor neste PC ou JOGAR ONLINE COM AMIGOS e cole a mesma URL HTTPS pública usada pelos outros jogadores. O endereço fica pré-preenchido nas próximas aberturas.
+
+JOGAR COM AMIGOS
+1. Cada pessoa deve criar sua própria conta.
+2. Abra AMIGOS & COOP ONLINE, adicione o nome de usuário do amigo e aceite a amizade dos dois lados.
+3. Crie uma sala e convide o amigo. Dentro da mesma rede, use o IP LAN do PC; para outro estado, publique o servidor por HTTPS (há um render.yaml de ponto de partida).
+4. No instalador, todos escolhem JOGAR ONLINE COM AMIGOS e usam a URL HTTPS pública idêntica.
+5. Com duas pessoas na sala, o anfitrião inicia a EXPEDIÇÃO COOPERATIVA. Cada pessoa age no seu turno.
+
+IMPORTANTE
+- Não abra apenas o arquivo HTML; conta, save e coop precisam do servidor Python.
+- Um endereço 192.168.x.x só funciona na mesma rede local. Para jogar de longe, o serviço precisa estar hospedado publicamente.
+- O ZIP inclui o código-fonte e o script de build. O Setup.exe pré-compilado não foi criado neste ambiente Linux/offline.
+- A expedição cooperativa já tem suas próprias ações e combate autoritativo, mas ainda não compartilha todos os sistemas/recompensas do modo solo. Consulte README.md e RELATORIO_CICLO_V12.md.

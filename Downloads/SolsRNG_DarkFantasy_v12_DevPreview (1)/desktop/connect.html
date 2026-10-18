@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escolher servidor</title>
+<style>
+:root{color-scheme:dark;font-family:Segoe UI,Arial,sans-serif;background:#090a11;color:#eee4d1}*{box-sizing:border-box}body{margin:0;padding:22px;background:radial-gradient(ellipse at 50% 0,#362342 0,transparent 65%),#090a11}.brand{text-align:center;color:#e9c879;font-size:22px;font-weight:800;letter-spacing:.06em;text-shadow:2px 2px #000}.sub{text-align:center;color:#b8adbf;margin:8px 0 18px;font-size:13px}.option{border:1px solid #5f4b32;background:#14131c;padding:14px;margin:10px 0}.option h2{margin:0 0 7px;font-size:16px;color:#f0d8a0}.option p{margin:0 0 10px;font-size:13px;line-height:1.4;color:#beb4c5}input{width:100%;padding:10px;background:#08090d;border:1px solid #665336;color:#fff;font-size:14px;margin:0 0 9px}button{width:100%;padding:11px;border:1px solid #a78243;background:linear-gradient(#50302e,#28131a);color:#ffe5a6;font-weight:700;cursor:pointer}button:hover{filter:brightness(1.15)}.err{color:#ff9c91;font-size:12px;min-height:18px;margin:4px 0}.foot{text-align:center;color:#827b8b;font-size:11px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="brand">☾ SOL'S RNG — DARK FANTASY</div><div class="sub">Escolha onde sua conta e sua partida vão se conectar.</div>
+<section class="option"><h2>Jogar localmente</h2><p>Abre o servidor neste PC. Bom para jogar solo ou testar na mesma rede Wi-Fi.</p><button id="local">INICIAR SERVIDOR DESTE PC</button></section>
+<section class="option"><h2>Jogar online com amigos</h2><p>Use a URL HTTPS pública que foi configurada para o jogo. Todas as pessoas precisam usar o mesmo servidor.</p><input id="url" type="url" autocomplete="url" placeholder="https://seu-jogo.onrender.com" aria-label="URL pública HTTPS do servidor"><button id="online">CONECTAR AO SERVIDOR ONLINE</button><div id="error" class="err" role="alert"></div></section>
+<div class="foot">A URL online precisa responder em /healthz. O modo remoto não inicia um servidor local.</div>
+<script>
+document.getElementById('local').addEventListener('click',()=>window.solsServerChoice.chooseLocal());
+document.getElementById('online').addEventListener('click',()=>{const field=document.getElementById('url');let parsed;try{parsed=new URL(field.value.trim());}catch(_){document.getElementById('error').textContent='Digite uma URL completa, como https://seu-jogo.onrender.com';return;}if(parsed.protocol!=='https:'||parsed.pathname!=='/'||parsed.search||parsed.hash){document.getElementById('error').textContent='Use somente a URL base HTTPS, sem caminho ou parâmetros.';return;}window.solsServerChoice.chooseOnline(parsed.origin+'/');});
+window.solsServerChoice.getLastUrl().then(url=>{if(url&&!document.getElementById('url').value)document.getElementById('url').value=url}).catch(()=>{});
+document.getElementById('url').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('online').click()});
+</script>
+</body>
+</html>

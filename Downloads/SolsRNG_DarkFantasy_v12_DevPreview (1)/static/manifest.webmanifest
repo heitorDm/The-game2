@@ -1,0 +1,12 @@
+{
+  "name": "Sol's RNG — Dark Fantasy",
+  "short_name": "Sol's RNG",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#101016",
+  "icons": [
+    {"src": "/static/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "/static/sols-rng.ico", "sizes": "16x16 24x24 32x32 48x48 64x64 128x128 256x256", "type": "image/x-icon", "purpose": "any"}
+  ]
+}

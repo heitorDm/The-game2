@@ -1,0 +1,61 @@
+{
+  "name": "sols-rng-dark-fantasy",
+  "version": "0.12.0",
+  "description": "Sol's RNG - Dark Fantasy desktop game",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0",
+    "electron-builder": "^26.0.12",
+    "socket.io-client": "^4.8.4"
+  },
+  "build": {
+    "appId": "br.solsrng.darkfantasy",
+    "productName": "Sol's RNG - Dark Fantasy",
+    "asar": true,
+    "files": [
+      "main.cjs",
+      "connect.html",
+      "connect-preload.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../dist/SolsRNGDarkFantasyServer",
+        "to": "sols-server"
+      },
+      {
+        "from": "../static/sols-rng.ico",
+        "to": "sols-rng.ico"
+      }
+    ],
+    "directories": {
+      "output": "../release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "../static/sols-rng.ico",
+      "artifactName": "SolsRNGDarkFantasy-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false,
+      "shortcutName": "Sol's RNG - Dark Fantasy"
+    }
+  }
+}
